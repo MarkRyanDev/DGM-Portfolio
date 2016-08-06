@@ -1,0 +1,27 @@
+.mainTitle {
+    background-color: #4466AA;
+    height:100%;
+}
+
+.topLeft {
+    background-color: #5577BB;
+    height:100%;
+}
+
+.pageContent {
+    padding: 2% 5%;
+}
+
+.contentContainer {
+    background-color: #5577BB;
+    height:100%;
+}
+
+.sidebar {
+    background-color: #6677BB;
+    height:85%;
+}
+
+.topBar {
+    height:15%;
+}
