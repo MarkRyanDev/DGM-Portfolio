@@ -22,6 +22,13 @@ app.use(compression());
 
 //REST calls
 
+app.get('/api/photoshop', (req, res) => {
+  fs.readFile('Photoshop.json', (err, file) => {
+    if (err) throw err;
+    res.status(200).json(JSON.parse(file));
+  });
+});
+
 app.use(express.static(__dirname + '/web'));
 
 app.get('*', function(req, res){
