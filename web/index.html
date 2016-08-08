@@ -1,9 +1,29 @@
 <html>
     <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
-        <link rel="stylesheet" href="dgm.css" type="text/css" />
+        <link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="portfolio.css" type="text/css" />
+        <script src='lib/js/react.js'></script>
+        <script src='lib/js/react-dom.js'></script>
+        <script src='lib/js/browser.min.js'></script>
+        <script src='lib/js/jquery-3.1.0.min.js'></script>
+        <script src='lib/js/bootstrap.min.js'></script>
     </head>
     <body>
+      <script type="text/babel">
+        var CommentBox = React.createClass({
+        render: function() {
+          return (
+            <div className="commentBox">
+              Hello, world! I am a CommentBox.
+            </div>
+          );
+        }
+        });
+        ReactDOM.render(
+        <CommentBox />,
+        document.getElementById('content')
+        );
+      </script>
         <div class="container-fluid">
             <div class="row topBar">
                 <div class="topLeft col-sm-2">
@@ -25,6 +45,7 @@
                 </div>
                 <div class="container-fluid contentContainer">
                     <div class="pageContent col-sm-8">
+                      <div id='content'></div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lacinia egestas posuere. Fusce porttitor pulvinar tellus et tincidunt.
                         Quisque quis dolor sit amet velit dignissim pretium vitae non lectus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
                         posuere cubilia Curae; Aliquam mollis, lacus eu volutpat ullamcorper, ante tortor sagittis dolor, at dapibus lectus ante et ipsum. Sed

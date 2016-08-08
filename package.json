@@ -1,0 +1,30 @@
+{
+  "name": "dgm-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio Website for DGM 1110",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarkRyanDev/DGM-Portfolio.git"
+  },
+  "author": "MarkRyanDev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarkRyanDev/DGM-Portfolio/issues"
+  },
+  "homepage": "https://github.com/MarkRyanDev/DGM-Portfolio#readme",
+  "dependencies": {
+    "babel-core": "^6.13.2",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-react": "^6.11.1",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0"
+  },
+  "devDependencies": {
+    "webpack": "^1.13.1"
+  }
+}
