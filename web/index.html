@@ -11,9 +11,53 @@
     </head>
     <body>
       <script type="text/babel">
+        var internalLinkData = {
+          'Home':{
+            link:'/api/home'
+          },
+          'Photoshop':{
+            link:'/api/photoshop'
+          },
+          'Illustrator':{
+            link:'/api/illustrator'
+          },
+          'Audio':{
+            link:'/api/audio'
+          },
+          'Video':{
+            link:'/api/video'
+          }};
+        var InternalLink = React.createClass({
+          render: function(){
+            return (
+                <button className={'btn ' + (this.props.active ? 'btn-primary' : 'btn-default')}>{this.props.name}</button>
+            );
+          }
+        })
+        var ReactBody = React.createClass({
+          getInitialState: function(){ return {selected:'Photoshop'};},
+          render: function(){
+            var internalLinks = Object.keys(internalLinkData).map( function(key){
+              return(
+                <InternalLink name={key} active={ key === this.state.selected } key={key}/>
+              );
+            }, this);
+            return (
+              <div className="mainBody row">
+                <div className="sidebar col-sm-2">
+                  {internalLinks}
+                </div>
+                <div className="container-fluid contentContainer">
+                    <div className="pageContent col-sm-8">
+                      <PostList url={internalLinkData[this.state.selected].link}/>
+                    </div>
+                </div>
+            </div>
+            );
+          }
+        })
         var Post = React.createClass({
           render: function(){
-            console.log('attempting to render post');
             return (
             <div className='post panel panel-default'>
               <div className='panel-heading'>
@@ -59,7 +103,7 @@
           }
         });
         ReactDOM.render(
-          <PostList url='/api/photoshop'/>,
+          <ReactBody/>,
           document.getElementById('content')
         );
       </script>
@@ -72,22 +116,8 @@
                     <h1>Main Title Bar Placeholder</h1>
                 </div>
             </div>
-            <div class="mainBody row">
-                <div class="sidebar col-sm-2">
-                    <ul>
-                        <li>Example</li>
-                        <li>Example</li>
-                        <li>Example</li>
-                        <li>Example</li>
-                        <li>Example</li>
-                    </ul>
-                </div>
-                <div class="container-fluid contentContainer">
-                    <div class="pageContent col-sm-8">
-                      <div id='content'></div>
-                    </div>
-                </div>
-            </div>
+            <div id='content'></div>
+
         </div>
     </body>
 </html>
