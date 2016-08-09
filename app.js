@@ -22,8 +22,8 @@ app.use(compression());
 
 //REST calls
 
-app.get('/api/photoshop', (req, res) => {
-  fs.readFile('Photoshop.json', (err, file) => {
+app.get('/api/posts/:name', (req, res) => {
+  fs.readFile(`${__dirname}/posts/${req.params.name}.json`, (err, file) => {
     if (err) throw err;
     res.status(200).json(JSON.parse(file));
   });
@@ -37,6 +37,8 @@ app.get('*', function(req, res){
 
 // var server = app.listen(process.env.PORT, process.env.IP);
 var server = app.listen(8080, 'localhost');
+
+console.log(`app listening on localhost:8080`);
 
 function gracefulShutdown(){
     console.log('\nStarting Shutdown');
