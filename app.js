@@ -36,6 +36,21 @@ app.get('/api/pages/:name', (req, res) => {
   });
 });
 
+app.get('/api/images', (req, res) => {
+  fs.readdir(__dirname + '/web/img', (err, listing) => {
+    console.log(listing);
+    res.status(200).json(listing);
+  });
+});
+
+app.post('/api/posts', (req,res) => {
+  var post = req.body;
+  connection.query(`INSERT INTO posts (title, type, content, description, page) values ("${post.title}", "${post.type}", "${post.content}", "${post.description || 'NULL'}", "${post.page}")`,
+    (erro,results, fields) => {
+      res.sendStatus(204);
+    });
+});
+
 app.patch('/api/posts/:id', (req,res) => {
   var updatedInfo = [];
   var data = req.body;

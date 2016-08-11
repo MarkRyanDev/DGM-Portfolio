@@ -29,7 +29,7 @@
             'image': 'the image location on the server'
           },
           changedTypeSelected: function(){
-            this.setState({typeSelected = $('#typeSelect').val()});
+            // this.setState({typeSelected = $('#typeSelect').val()});
             $('#editDescriptionContainer').attr('hidden', this.state.typeSelected === 'text');
           },
           render: function(){
