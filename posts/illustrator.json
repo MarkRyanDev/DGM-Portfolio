@@ -1,3 +1,23 @@
 [
-  
+  {
+    "title":"Pen Tool Excercise",
+    "content":"img/More_Pen_Tool_Mark_Ryan.pdf",
+    "description":"Filler Description",
+    "id":10,
+    "type":"image"
+  },
+  {
+    "title":"Recreate Professional Logos",
+    "content":"img/Logos_Mark_Ryan.jpg",
+    "description":"Filler Description",
+    "id":11,
+    "type":"image"
+  },
+  {
+    "title":"Personal Logo",
+    "content":"img/Personal Logo.png",
+    "description":"Filler Description",
+    "id":12,
+    "type":"image"
+  }
 ]

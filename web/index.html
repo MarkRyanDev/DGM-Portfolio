@@ -2,6 +2,7 @@
     <head>
       <title>Portfolio - MarkRyanDev</title>
         <link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="lib/css/Supernice.mincss" type="text/css" />
         <link rel="stylesheet" href="portfolio.css" type="text/css" />
         <script src='lib/js/react.js'></script>
         <script src='lib/js/react-dom.js'></script>
@@ -10,131 +11,17 @@
         <script src='lib/js/bootstrap.min.js'></script>
     </head>
     <body>
-      <script type="text/babel">
-        var internalLinkData = {
-          'Home':{
-            link:'/api/posts/home'
-          },
-          'Photoshop':{
-            link:'/api/posts/photoshop'
-          },
-          'Illustrator':{
-            link:'/api/posts/illustrator'
-          },
-          'Audio':{
-            link:'/api/posts/audio'
-          },
-          'Video':{
-            link:'/api/posts/video'
-          }};
-        var InternalLink = React.createClass({
-          render: function(){
-            return (
-                <button onClick={this.props.changeSelected} className={'btn ' + (this.props.active ? 'btn-primary' : 'btn-default')}>{this.props.name}</button>
-            );
-          }
-        })
-        var ReactBody = React.createClass({
-          getInitialState: function(){ return {selected:'Photoshop'};},
-          handleSelectedChangeCurry: function(newSelected){
-            return function() {this.setState({selected:newSelected})};
-          }.bind(this),
-          render: function(){
-            var internalLinks = Object.keys(internalLinkData).map( function(key){
-              return(
-                <InternalLink name={key} active={ key === this.state.selected } key={key} changeSelected={this.handleSelectedChangeCurry(key).bind(this)}/>
-              );
-            }, this);
-            return (
-              <div className="mainBody row">
-                <div className="sidebar col-sm-2">
-                  {internalLinks}
-                </div>
-                <div className="container-fluid contentContainer">
-                    <div className="pageContent col-sm-8">
-                      <PostList url={internalLinkData[this.state.selected].link} />
-                    </div>
-                </div>
-            </div>
-            );
-          }
-        })
-        var Post = React.createClass({
-          render: function(){
-            return (
-            <div className='post panel panel-default'>
-              <div className='panel-heading'>
-                <h2 className='panel-title'>{this.props.title}</h2>
+      <div class="container-fluid">
+          <div class="row topBar">
+              <div class="topLeft col-sm-2 vertical_center">
+                <img class="logo" src="img/Personal Logo.png"></img>
               </div>
-              <div className='panel-body'>
-                <img className='img-responsive' src={this.props['data-image']}/>
+              <div class="mainTitle col-sm-10">
+                  <h1>Mark Ryan Dev - DGM Portfolio</h1>
               </div>
-              <div className='panel-footer'>
-                <p>{this.props['data-description']}</p>
-              </div>
-            </div>
-          );}
-        });
-        var PostList = React.createClass({
-          getInitialState: function() {
-            return {postsData: []};
-          },
-          componentDidMount: function(){
-            $.ajax({
-              url: this.props.url,
-              dataType: 'json',
-              success: function(data) {
-                console.log(`got data from server: ${data}`);
-                this.setState({postsData: data});
-              }.bind(this),
-              error: function(xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
-              }.bind(this)
-            });
-          },
-          componentWillReceiveProps: function(nextProps) {
-            if(nextProps.url === this.props.url) return;
-            $.ajax({
-              url: nextProps.url,
-              dataType: 'json',
-              success: function(data) {
-                console.log(`got data from server: ${data}`);
-                this.setState({postsData: data});
-              }.bind(this),
-              error: function(xhr, status, err) {
-                console.error(nextProps.url, status, err.toString());
-              }.bind(this)
-            });
-          },
-          render: function() {
-            var posts = this.state.postsData.map(function(post) {
-              return (
-                <Post title={post.title} data-image={post.image} data-description={post.description} key={post.id}/>
-              );
-            });
-            return (
-              <div className="postList">
-                {posts}
-              </div>
-            );
-          }
-        });
-        ReactDOM.render(
-          <ReactBody/>,
-          document.getElementById('content')
-        );
-      </script>
-        <div class="container-fluid">
-            <div class="row topBar">
-                <div class="topLeft col-sm-2">
-                    <h1>LOGO</h1>
-                </div>
-                <div class="mainTitle col-sm-10">
-                    <h1>Main Title Bar Placeholder</h1>
-                </div>
-            </div>
-            <div id='content'></div>
-
-        </div>
+          </div>
+          <div id='content'></div>
+      </div>
+      <script type="text/babel" src="reactMain.js"></script>
     </body>
 </html>

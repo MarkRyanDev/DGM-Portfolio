@@ -1,10 +1,18 @@
 console.log("server start");
 var express = require("express");
+var mysql = require('mysql');
 
 //load middleware modules
 var logger = require("morgan");
 var fs = require('fs');
-//var bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
+
+var connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'password',
+    database: 'portfolioPage'
+});
 
 //create app
 var app = express();
@@ -17,17 +25,32 @@ app.use(logger("dev"));
 app.use(compression());
 // app.use(favicon(web + '/favicon.ico'));
 
-//app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 //REST calls
 
-app.get('/api/posts/:name', (req, res) => {
-  fs.readFile(`${__dirname}/posts/${req.params.name}.json`, (err, file) => {
-    if (err) throw err;
-    res.status(200).json(JSON.parse(file));
+app.get('/api/pages/:name', (req, res) => {
+  connection.query(`select * from posts where page="${req.params.name}"`, (error, results, fields) => {
+    res.status(200).json(results);
   });
 });
+
+app.patch('/api/posts/:id', (req,res) => {
+  var updatedInfo = [];
+  var data = req.body;
+  for (var property in data) {
+    if(property === 'id') continue;
+    updatedInfo.push(`${property}="${data[property]}", `);
+  }
+  updatedInfo = updatedInfo.join('').slice(0,-2);
+  console.log(`got body ${data}`);
+  console.log(`making query: ${`UPDATE posts SET ${updatedInfo} WHERE id=${req.params.id}`}`);
+  connection.query(`UPDATE posts SET ${updatedInfo} WHERE id=${req.params.id}`, (error, results, fields) => {
+    if(error) throw error;
+    res.sendStatus(204);
+  });
+})
 
 app.use(express.static(__dirname + '/web'));
 

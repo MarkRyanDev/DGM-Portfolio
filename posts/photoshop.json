@@ -1,26 +1,65 @@
 [
   {
-    "title":"No Kissing",
-    "image":"img/NoKissing.jpg",
-    "description":"No Kissing Description Filler",
-    "id":1
+    "title": "No Kissing",
+    "description": "No Kissing Description Filler",
+    "id": 1,
+    "type": "image",
+    "content": "img/NoKissing.jpg"
   },
   {
-    "title":"Idaho",
-    "image":"img/Idaho.jpg",
-    "description":"Idaho Description Filler",
-    "id":2
+    "title": "Idaho",
+    "description": "Idaho Description Filler",
+    "id": 2,
+    "type": "image",
+    "content": "img/Idaho.jpg"
   },
   {
-    "title":"Radio",
-    "image":"img/Radio.jpg",
-    "description":"Radio Description Filler",
-    "id":3
+    "title": "Radio",
+    "description": "Radio Description Filler",
+    "id": 3,
+    "type": "image",
+    "content": "img/Radio.jpg"
   },
   {
-    "title":"Simple Invitation",
-    "image":"img/invitation.jpg",
-    "description":"invitation Description Filler",
-    "id":4
+    "title": "Simple Invitation",
+    "description": "invitation Description Filler",
+    "id": 4,
+    "type": "image",
+    "content": "img/invitation.jpg"
+  },
+  {
+    "title": "Stone Cold",
+    "description": "Filler Description",
+    "id": 6,
+    "type": "image",
+    "content": "img/stone_cold.jpg"
+  },
+  {
+    "title": "Line Art",
+    "description": "Filler Description",
+    "id": 8,
+    "type": "image",
+    "content": "img/line_art.jpg"
+  },
+  {
+    "title": "Digital Media Subway Art",
+    "description": "Filler Description",
+    "id": 7,
+    "type": "image",
+    "content": "img/Subway_Art.jpg"
+  },
+  {
+    "title": "Original Subway Art",
+    "description": "Filler Description",
+    "id": 9,
+    "type": "image",
+    "content": "img/A2a_Original_Subway_Mark_Ryan.jpg"
+  },
+  {
+    "title": "Magazine Cover",
+    "description": "Magazine Cover Description Filler",
+    "id": 5,
+    "type": "image",
+    "content": "img/A1a_Magazine_Cover_Mark_Ryan.jpg"
   }
 ]
