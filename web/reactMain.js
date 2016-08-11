@@ -29,7 +29,7 @@
             'image': 'the image location on the server'
           },
           changedTypeSelected: function(){
-            this.state.typeSelected = $('#typeSelect').val();
+            this.setState({typeSelected = $('#typeSelect').val()});
             $('#editDescriptionContainer').attr('hidden', this.state.typeSelected === 'text');
           },
           render: function(){
@@ -196,7 +196,7 @@
           editButtonHandlerCurry: function (post) {
             return function(){
               $('#editModal').modal('show');
-              this.state.selectedPost = post;
+              this.setState({selectedPost: post});
               console.log(this.state.selectedPost);
             }.bind(this);
           },
